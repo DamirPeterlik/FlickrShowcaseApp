@@ -47,8 +47,10 @@ class FlickrSearchViewController: BaseVC, FlickrSearchViewControllerInput, Alert
     }
     
     @IBAction func startFlickrPressed () {
+        startFlickrButton.isEnabled = false
         guard let searchText = searchTextField.text, searchText != "" else {
             self.showAlertWithMessage(message: wrongSearchTag)
+            startFlickrButton.isEnabled = true
             return
         }
         photosArray = []
@@ -58,8 +60,8 @@ class FlickrSearchViewController: BaseVC, FlickrSearchViewControllerInput, Alert
     func showPhotos(photos: [FlickrPhotoModel], totalPagesCount: Int, totalImagesCount: Int) {
         photosArray.append(contentsOf: photos)
         self.totalPages = totalPagesCount
-        
         performSegue(withIdentifier: flickrPhotosVCsegue, sender: self)
+        startFlickrButton.isEnabled = true
     }
 
     func showError(errorMessage: String) {
