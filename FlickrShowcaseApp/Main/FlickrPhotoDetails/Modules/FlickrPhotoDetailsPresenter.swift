@@ -17,14 +17,14 @@ class FlickrPhotoDetailsPresenter: FlickrPhotoDetailsPresenterInput {
     weak var view: FlickrPhotoDetailsInput!
     
     func prepareSelectedFlickrPhotoModel(photoModel: FlickrPhotoModel) {
-        self.interactor.configureFlickrPhotoModel(photoModel: photoModel)
+        interactor.configureFlickrPhotoModel(photoModel: photoModel)
     }
     
     func loadLargeFlickrPhotoModelImage() {
-        self.interactor.loadImageFromUrl()
+        interactor.loadImageFromUrl()
     }
     
     func sendPreparedPhotoImage(image: UIImage) {
-        self.view.sendPreparedPhotoImage(image: image)
+        view.sendPreparedPhotoImage(image: image)
     }
 }

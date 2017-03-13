@@ -24,7 +24,7 @@ class FlickrPhotoDetailsInteractor: FlickrPhotoDetailsInteractorInput {
     var flickrPhotoModel: FlickrPhotoModel?
     
     func configureFlickrPhotoModel(photoModel: FlickrPhotoModel) {
-        self.flickrPhotoModel = photoModel
+        flickrPhotoModel = photoModel
     }
     
     func loadImageFromUrl() {

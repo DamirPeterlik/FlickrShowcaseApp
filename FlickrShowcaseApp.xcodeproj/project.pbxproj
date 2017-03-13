@@ -192,8 +192,8 @@
 		3DB2E9DF1E7726E10039B0DB /* FlickrSearchResults */ = {
 			isa = PBXGroup;
 			children = (
-				3DB2E9E01E7726E10039B0DB /* Cell */,
 				3DB2E9E31E7726E10039B0DB /* Modules */,
+				3DB2E9E01E7726E10039B0DB /* Cell */,
 			);
 			path = FlickrSearchResults;
 			sourceTree = "<group>";

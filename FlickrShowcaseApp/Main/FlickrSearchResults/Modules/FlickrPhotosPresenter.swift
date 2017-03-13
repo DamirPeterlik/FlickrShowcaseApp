@@ -21,11 +21,11 @@ class FlickrPhotosPresenter: FlickrSearchPresenter {
     }
     
     override func updatePhotos(photos: [FlickrPhotoModel], totalPagesCount: Int, totalImagesCount: Int) {
-        self.view.showPhotos(photos: photos, totalPagesCount: totalPagesCount, totalImagesCount: totalImagesCount)
+        view.showPhotos(photos: photos, totalPagesCount: totalPagesCount, totalImagesCount: totalImagesCount)
     }
     
     override func serviceError (error: String) {
-        self.view.showError(errorMessage: defaultErrorMessage)
+        view.showError(errorMessage: defaultErrorMessage)
     }
     
     func goToFlickrPhotoDetailsVC() {
@@ -33,7 +33,7 @@ class FlickrPhotosPresenter: FlickrSearchPresenter {
     }
     
     func sendDataToFlickrDetailsVC(segue: UIStoryboardSegue) {
-        self.wireframe.sendDataToFlickrDetailsVC(segue: segue)
+        wireframe.sendDataToFlickrDetailsVC(segue: segue)
     }
     
 }

@@ -37,19 +37,19 @@ class FlickrSearchViewController: BaseVC, FlickrSearchViewControllerInput, Alert
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true
         searchTextField.text = ""
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
     }
     
     @IBAction func startFlickrPressed () {
         startFlickrButton.isEnabled = false
         guard let searchText = searchTextField.text, searchText != "" else {
-            self.showAlertWithMessage(message: wrongSearchTag)
+            showAlertWithMessage(message: wrongSearchTag)
             startFlickrButton.isEnabled = true
             return
         }
@@ -59,14 +59,14 @@ class FlickrSearchViewController: BaseVC, FlickrSearchViewControllerInput, Alert
     
     func showPhotos(photos: [FlickrPhotoModel], totalPagesCount: Int, totalImagesCount: Int) {
         photosArray.append(contentsOf: photos)
-        self.totalPages = totalPagesCount
+        totalPages = totalPagesCount
         performSegue(withIdentifier: flickrPhotosVCsegue, sender: self)
         startFlickrButton.isEnabled = true
-        self.searchTextField.resignFirstResponder()
+        searchTextField.resignFirstResponder()
     }
 
     func showError(errorMessage: String) {
-        self.showAlertWithMessage(message: errorMessage)
+        showAlertWithMessage(message: errorMessage)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

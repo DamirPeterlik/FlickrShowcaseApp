@@ -31,10 +31,10 @@ class FlickrPhotoDetailsViewController: UIViewController, FlickrPhotoDetailsInpu
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter.loadLargeFlickrPhotoModelImage()
+        presenter.loadLargeFlickrPhotoModelImage()
     }
 
     func sendPreparedPhotoImage(image: UIImage) {
-        self.flickrPhotoImageView.image = image
+        flickrPhotoImageView.image = image
     }
 }

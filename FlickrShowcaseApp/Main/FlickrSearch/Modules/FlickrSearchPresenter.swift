@@ -21,11 +21,11 @@ class FlickrSearchPresenter: FlickrSearchPresenterInput {
     }
     
     func updatePhotos(photos: [FlickrPhotoModel], totalPagesCount: Int, totalImagesCount: Int) {
-        self.view.showPhotos(photos: photos, totalPagesCount: totalPagesCount, totalImagesCount: totalImagesCount)
+        view.showPhotos(photos: photos, totalPagesCount: totalPagesCount, totalImagesCount: totalImagesCount)
     }
     
     func serviceError (error: String) {
-        self.view.showError(errorMessage: error)
+        view.showError(errorMessage: error)
     }
     
 }

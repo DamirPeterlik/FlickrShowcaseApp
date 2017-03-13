@@ -36,8 +36,8 @@ class FlickrPhotosViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView.reloadData()
-        self.title = searchText
-        self.navigationController?.navigationBar.backItem?.title = ""
+        title = searchText
+        navigationController?.navigationBar.backItem?.title = ""
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,7 +62,7 @@ extension FlickrPhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row < photosArray.count {
             let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as FlickrPhotoCollectionViewCell
-            let flickrPhoto = self.photosArray[indexPath.row]
+            let flickrPhoto = photosArray[indexPath.row]
             cell.configureCell(flickrImageData: flickrPhoto)
             return cell
         }
@@ -75,7 +75,7 @@ extension FlickrPhotosViewController: UICollectionViewDataSource {
 
 extension FlickrPhotosViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.presenter.goToFlickrPhotoDetailsVC()
+        presenter.goToFlickrPhotoDetailsVC()
     }
 }
 
