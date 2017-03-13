@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKS-ed-RHv">
-                                <rect key="frame" x="150" y="382.5" width="75" height="30"/>
+                                <rect key="frame" x="150" y="368.5" width="75" height="30"/>
                                 <state key="normal" title="Start Flickr"/>
                                 <connections>
                                     <action selector="startFlickrPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="KEc-ZG-Qdm"/>
@@ -42,7 +42,7 @@
                         <constraints>
                             <constraint firstItem="opK-Gd-Pag" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="P2d-ci-xMq"/>
                             <constraint firstItem="EKS-ed-RHv" firstAttribute="centerX" secondItem="opK-Gd-Pag" secondAttribute="centerX" id="e2s-or-MiK"/>
-                            <constraint firstItem="EKS-ed-RHv" firstAttribute="top" secondItem="opK-Gd-Pag" secondAttribute="bottom" constant="34" id="zQ1-iS-DIj"/>
+                            <constraint firstItem="EKS-ed-RHv" firstAttribute="top" secondItem="opK-Gd-Pag" secondAttribute="bottom" constant="20" id="zQ1-iS-DIj"/>
                             <constraint firstItem="opK-Gd-Pag" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zwl-sy-R0n"/>
                         </constraints>
                     </view>
