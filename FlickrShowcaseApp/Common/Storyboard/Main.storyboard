@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--test-->
+        <!--Flickr Search View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="FlickrSearchViewController" id="BYZ-38-t0r" customClass="FlickrSearchViewController" customModule="FlickrShowcaseApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,6 +21,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKS-ed-RHv">
+                                <rect key="frame" x="150" y="382.5" width="75" height="30"/>
+                                <state key="normal" title="Start Flickr"/>
+                                <connections>
+                                    <action selector="startFlickrPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="KEc-ZG-Qdm"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="opK-Gd-Pag">
                                 <rect key="frame" x="112.5" y="318.5" width="150" height="30"/>
                                 <constraints>
@@ -30,13 +37,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKS-ed-RHv">
-                                <rect key="frame" x="150.5" y="382.5" width="75" height="30"/>
-                                <state key="normal" title="Start Flickr"/>
-                                <connections>
-                                    <action selector="startFlickrPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="KEc-ZG-Qdm"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -46,7 +46,7 @@
                             <constraint firstItem="opK-Gd-Pag" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zwl-sy-R0n"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="test" id="8g6-sz-aRk"/>
+                    <navigationItem key="navigationItem" id="8g6-sz-aRk"/>
                     <connections>
                         <outlet property="searchTextField" destination="opK-Gd-Pag" id="2fP-ZJ-IkM"/>
                         <outlet property="startFlickrButton" destination="EKS-ed-RHv" id="Xjb-Vl-6lC"/>
@@ -57,7 +57,7 @@
             </objects>
             <point key="canvasLocation" x="2684" y="51.724137931034484"/>
         </scene>
-        <!--Title-->
+        <!--Flickr Photos View Controller-->
         <scene sceneID="EBS-1p-MaK">
             <objects>
                 <viewController storyboardIdentifier="FlickrPhotosViewController" id="Zqz-Lf-DQP" customClass="FlickrPhotosViewController" customModule="FlickrShowcaseApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -103,7 +103,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlickrLoadingCollectionViewCell" id="v6V-e3-fdl" customClass="FlickrLoadingCollectionViewCell" customModule="FlickrShowcaseApp" customModuleProvider="target">
-                                        <rect key="frame" x="137.5" y="0.0" width="100" height="100"/>
+                                        <rect key="frame" x="138" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -134,7 +134,7 @@
                             <constraint firstItem="pgJ-PK-5kN" firstAttribute="leading" secondItem="ihg-Vj-QBu" secondAttribute="leading" id="ttS-hx-b7g"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="r8u-1P-fhT"/>
+                    <navigationItem key="navigationItem" id="r8u-1P-fhT"/>
                     <connections>
                         <outlet property="collectionView" destination="pgJ-PK-5kN" id="Q5s-dq-Oya"/>
                         <segue destination="1Cg-5K-g6K" kind="show" identifier="FlickrPhotoDetailsViewControllerSegue" id="aA2-lE-rlp"/>
@@ -160,20 +160,28 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Umz-7X-pwt">
-                                <rect key="frame" x="0.0" y="517" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="567" width="375" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4c-Nk-NPg">
-                                        <rect key="frame" x="166.5" y="65" width="42" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4c-Nk-NPg">
+                                        <rect key="frame" x="10" y="10" width="80" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dve-Qc-vjz">
+                                        <rect key="frame" x="10" y="39" width="99" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" white="0.86436631944444442" alpha="0.70280393835616439" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="36V-vR-xUh"/>
-                                    <constraint firstItem="f4c-Nk-NPg" firstAttribute="centerX" secondItem="Umz-7X-pwt" secondAttribute="centerX" id="N4p-W7-kSX"/>
-                                    <constraint firstItem="f4c-Nk-NPg" firstAttribute="centerY" secondItem="Umz-7X-pwt" secondAttribute="centerY" id="rfw-FR-hj8"/>
+                                    <constraint firstAttribute="height" constant="100" id="36V-vR-xUh"/>
+                                    <constraint firstItem="dve-Qc-vjz" firstAttribute="top" secondItem="f4c-Nk-NPg" secondAttribute="bottom" constant="8" id="Kcp-Xa-8Ei"/>
+                                    <constraint firstItem="f4c-Nk-NPg" firstAttribute="top" secondItem="Umz-7X-pwt" secondAttribute="top" constant="10" id="NGO-br-KxX"/>
+                                    <constraint firstItem="dve-Qc-vjz" firstAttribute="leading" secondItem="f4c-Nk-NPg" secondAttribute="leading" id="bjj-wq-dga"/>
+                                    <constraint firstItem="f4c-Nk-NPg" firstAttribute="leading" secondItem="Umz-7X-pwt" secondAttribute="leading" constant="10" id="qcp-bD-A9T"/>
                                 </constraints>
                             </view>
                         </subviews>
