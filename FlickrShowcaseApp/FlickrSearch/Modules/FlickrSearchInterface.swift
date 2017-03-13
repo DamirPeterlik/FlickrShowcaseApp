@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+class FlickrSearchInterface {
+    
+    static let sharedInstance = FlickrSearchInterface()
+    
+    func configure(viewController: FlickrSearchViewController) {
+        let dataManager = FlickrDataManager()
+        let interactor = FlickrSearchInteractor()
+        let presenter = FlickrSearchPresenter()
+        viewController.presenter = presenter
+        presenter.view = viewController
+        interactor.presenter = presenter
+        presenter.interactor = interactor
+        interactor.flickrAPIDataManager = dataManager
+    }
+}
