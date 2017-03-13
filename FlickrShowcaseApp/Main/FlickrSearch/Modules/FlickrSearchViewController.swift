@@ -62,6 +62,7 @@ class FlickrSearchViewController: BaseVC, FlickrSearchViewControllerInput, Alert
         self.totalPages = totalPagesCount
         performSegue(withIdentifier: flickrPhotosVCsegue, sender: self)
         startFlickrButton.isEnabled = true
+        self.searchTextField.resignFirstResponder()
     }
 
     func showError(errorMessage: String) {
@@ -78,7 +79,6 @@ class FlickrSearchViewController: BaseVC, FlickrSearchViewControllerInput, Alert
         }
     }
 }
-
 
 
 
