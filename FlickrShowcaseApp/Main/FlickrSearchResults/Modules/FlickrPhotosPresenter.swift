@@ -8,23 +8,25 @@
 
 import UIKit
 
-protocol FlickrPhotosPresenterInput: FlickrPhotosViewControllerOutput {
+protocol FlickrPhotosPresenterInput: FlickrPhotosInteractorOutput {
 }
 
-class FlickrPhotosPresenter: FlickrSearchPresenter {
+class FlickrPhotosPresenter: FlickrPhotosPresenterInput {
     
-    weak var presenter: FlickrSearchInteractorOutput!
+    weak var presenter: FlickrPhotosInteractorOutput!
+    weak var view: FlickrPhotosViewControllerInput!
+    var interactor: FlickrPhotosInteractorInput!
     var wireframe: FlickrPhotosWireframeInput!
     
-    override func getPhotos(for searchText: String, page: Int) {
+    func getPhotos(for searchText: String, page: Int) {
         interactor.getPhotosFromDataManager(for: searchText, page: page)
     }
     
-    override func updatePhotos(photos: [FlickrPhotoModel], totalPagesCount: Int, totalImagesCount: Int) {
+    func updatePhotos(photos: [FlickrPhotoModel], totalPagesCount: Int, totalImagesCount: Int) {
         view.showPhotos(photos: photos, totalPagesCount: totalPagesCount, totalImagesCount: totalImagesCount)
     }
     
-    override func serviceError (error: String) {
+    func serviceError (error: String) {
         view.showError(errorMessage: defaultErrorMessage)
     }
     
@@ -36,4 +38,7 @@ class FlickrPhotosPresenter: FlickrSearchPresenter {
         wireframe.sendDataToFlickrDetailsVC(segue: segue)
     }
     
+    func prepareFlickrPhotosData(array: [FlickrPhotoModel], searchTag: String, totalPages: Int) {
+        view.loadPreparedFlickrPhotosData(array: array, searchTag: searchTag, totalPages: totalPages)
+    }
 }

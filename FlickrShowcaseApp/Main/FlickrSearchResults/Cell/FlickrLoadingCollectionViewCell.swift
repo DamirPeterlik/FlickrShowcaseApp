@@ -10,4 +10,15 @@ import UIKit
 
 class FlickrLoadingCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        spinner.startAnimating()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        spinner.startAnimating()
+    }
 }

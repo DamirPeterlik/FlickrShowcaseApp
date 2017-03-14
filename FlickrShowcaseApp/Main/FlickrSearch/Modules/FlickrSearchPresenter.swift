@@ -15,6 +15,7 @@ class FlickrSearchPresenter: FlickrSearchPresenterInput {
 
     weak var view: FlickrSearchViewControllerInput!
     var interactor: FlickrSearchInteractorInput!
+    var wireframe: FlickrSearchWireframeInput!
     
     func getPhotos(for searchText: String, page: Int) {
         interactor.getPhotosFromDataManager(for: searchText, page: page)
@@ -26,6 +27,14 @@ class FlickrSearchPresenter: FlickrSearchPresenterInput {
     
     func serviceError (error: String) {
         view.showError(errorMessage: error)
+    }
+    
+    func goToFlickrPhotosVC() {
+        wireframe.navigateToFlickrPhotosVC()
+    }
+    
+    func sendDataToFlickrPhotosVC(segue: UIStoryboardSegue) {
+        wireframe.sendDataToFlickrPhotosVC(segue: segue)
     }
     
 }

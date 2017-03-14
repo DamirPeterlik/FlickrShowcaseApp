@@ -25,6 +25,6 @@ class FlickrPhotoDetailsPresenter: FlickrPhotoDetailsPresenterInput {
     }
     
     func sendPreparedPhotoImage(image: UIImage) {
-        view.sendPreparedPhotoImage(image: image)
+        view.loadPreparedPhotoImage(image: image)
     }
 }

@@ -31,7 +31,6 @@ class FlickrPhotosWireframe: FlickrPhotosWireframeInput {
         if let selectedIndexPath = viewController.collectionView.indexPathsForSelectedItems?.first {
             let selectedFlickrPhotoModel = viewController.photosArray[selectedIndexPath.row]
             let showFlickrDetailVC = segue.destination as! FlickrPhotoDetailsViewController
-            
             showFlickrDetailVC.presenter.prepareSelectedFlickrPhotoModel(photoModel: selectedFlickrPhotoModel)
         }
     }

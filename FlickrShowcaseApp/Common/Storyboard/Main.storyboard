@@ -103,7 +103,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlickrLoadingCollectionViewCell" id="v6V-e3-fdl" customClass="FlickrLoadingCollectionViewCell" customModule="FlickrShowcaseApp" customModuleProvider="target">
-                                        <rect key="frame" x="138" y="0.0" width="100" height="100"/>
+                                        <rect key="frame" x="137.5" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -118,6 +118,9 @@
                                             <constraint firstItem="vIH-3p-lNc" firstAttribute="centerX" secondItem="v6V-e3-fdl" secondAttribute="centerX" id="EOv-y3-0r7"/>
                                             <constraint firstItem="vIH-3p-lNc" firstAttribute="centerY" secondItem="v6V-e3-fdl" secondAttribute="centerY" id="HRy-Mm-hzY"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="spinner" destination="vIH-3p-lNc" id="svb-XZ-Grp"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

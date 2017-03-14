@@ -10,6 +10,8 @@ import UIKit
 
 protocol FlickrSearchViewControllerOutput: class {
     func getPhotos(for searchText: String, page: Int)
+    func goToFlickrPhotosVC()
+    func sendDataToFlickrPhotosVC(segue: UIStoryboardSegue)
 }
 
 protocol FlickrSearchViewControllerInput: class {
@@ -22,7 +24,7 @@ class FlickrSearchViewController: BaseVC, FlickrSearchViewControllerInput, Alert
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var startFlickrButton: UIButton!
 
-    var presenter: FlickrSearchViewControllerOutput!
+    var presenter: FlickrSearchPresenter!
     var photosArray: [FlickrPhotoModel] = []
     var totalPages: Int!
     
@@ -53,6 +55,7 @@ class FlickrSearchViewController: BaseVC, FlickrSearchViewControllerInput, Alert
             startFlickrButton.isEnabled = true
             return
         }
+        showLoading()
         photosArray = []
         presenter.getPhotos(for: searchText, page: 1)
     }
@@ -60,9 +63,10 @@ class FlickrSearchViewController: BaseVC, FlickrSearchViewControllerInput, Alert
     func showPhotos(photos: [FlickrPhotoModel], totalPagesCount: Int, totalImagesCount: Int) {
         photosArray.append(contentsOf: photos)
         totalPages = totalPagesCount
-        performSegue(withIdentifier: flickrPhotosVCsegue, sender: self)
         startFlickrButton.isEnabled = true
         searchTextField.resignFirstResponder()
+        hideLoading()
+        presenter.goToFlickrPhotosVC()
     }
 
     func showError(errorMessage: String) {
@@ -70,15 +74,7 @@ class FlickrSearchViewController: BaseVC, FlickrSearchViewControllerInput, Alert
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == flickrPhotosVCsegue {
-            if let photosVC = segue.destination as? FlickrPhotosViewController {
-                photosVC.searchText = searchTextField.text!
-                photosVC.photosArray = photosArray
-                photosVC.totalPageCount = totalPages
-            }
-        }
+        presenter.sendDataToFlickrPhotosVC(segue: segue)
     }
 }
-
-
 

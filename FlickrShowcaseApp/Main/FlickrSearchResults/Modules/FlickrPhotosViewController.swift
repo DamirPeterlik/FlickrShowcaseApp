@@ -11,26 +11,36 @@ import UIKit
 protocol FlickrPhotosViewControllerOutput: class {
     func goToFlickrPhotoDetailsVC()
     func sendDataToFlickrDetailsVC(segue: UIStoryboardSegue)
+    func prepareFlickrPhotosData(array: [FlickrPhotoModel], searchTag: String, totalPages: Int)
+    func getPhotos(for searchText: String, page: Int)
 }
 
 protocol FlickrPhotosViewControllerInput: class {
+    func showPhotos(photos: [FlickrPhotoModel], totalPagesCount: Int, totalImagesCount: Int)
+    func showError(errorMessage: String)
+    func loadPreparedFlickrPhotosData(array: [FlickrPhotoModel], searchTag: String, totalPages: Int)
+
 }
 
-class FlickrPhotosViewController: UIViewController {
+class FlickrPhotosViewController: UIViewController, FlickrPhotosViewControllerInput {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    var presenter: FlickrPhotosPresenter!
     
+    var presenter: FlickrPhotosPresenter!
     var photosArray: [FlickrPhotoModel] = []
     var searchText: String!
     var currentPage = 1
     var totalPageCount = 1
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        FlickrPhotosInterface.sharedInstance.configure(viewController: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        FlickrPhotosInterface.sharedInstance.configure(viewController: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +52,26 @@ class FlickrPhotosViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         presenter.sendDataToFlickrDetailsVC(segue: segue)
+    }
+    
+    func showPhotos(photos: [FlickrPhotoModel], totalPagesCount: Int, totalImagesCount: Int) {
+        self.collectionView.performBatchUpdates({
+            self.collectionView.insertItems(at: (self.collectionView?.indexPathsForVisibleItems)!)
+            let indexes: IndexSet = [0]
+            self.collectionView.reloadSections(indexes)
+            self.photosArray.append(contentsOf: photos)
+            self.totalPageCount = totalPagesCount
+        }, completion: nil)
+    }
+    
+    func loadPreparedFlickrPhotosData(array: [FlickrPhotoModel], searchTag: String, totalPages: Int) {
+        photosArray = array
+        searchText = searchTag
+        totalPageCount = totalPages
+    }
+    
+    func showError(errorMessage: String) {
+        print(errorMessage)
     }
     
 }
@@ -100,25 +130,5 @@ extension FlickrPhotosViewController: UICollectionViewDelegateFlowLayout {
         return 0.5
     }
 }
-
-extension FlickrPhotosViewController: FlickrSearchViewControllerInput {
-    
-    func showPhotos(photos: [FlickrPhotoModel], totalPagesCount: Int, totalImagesCount: Int) {
-        self.collectionView.performBatchUpdates({
-            self.collectionView.insertItems(at: (self.collectionView?.indexPathsForVisibleItems)!)
-            let indexes: IndexSet = [0]
-            self.collectionView.reloadSections(indexes)
-            self.photosArray.append(contentsOf: photos)
-            self.totalPageCount = totalPagesCount
-        }, completion: nil)
-    }
-    
-    func showError(errorMessage: String) {
-        print(errorMessage)
-    }
-    
-}
-
-
 
 

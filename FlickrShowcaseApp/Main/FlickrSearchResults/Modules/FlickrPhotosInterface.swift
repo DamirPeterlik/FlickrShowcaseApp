@@ -14,7 +14,7 @@ class FlickrPhotosInterface {
     
     func configure(viewController: FlickrPhotosViewController) {
         let dataManager = FlickrDataManager()
-        let interactor = FlickrSearchInteractor()
+        let interactor = FlickrPhotosInteractor()
         let presenter = FlickrPhotosPresenter()
         let wireframe = FlickrPhotosWireframe()
         wireframe.viewController = viewController

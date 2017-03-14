@@ -16,6 +16,9 @@ class FlickrSearchInterface {
         let dataManager = FlickrDataManager()
         let interactor = FlickrSearchInteractor()
         let presenter = FlickrSearchPresenter()
+        let wireframe = FlickrSearchWireframe()
+        wireframe.viewController = viewController
+        presenter.wireframe = wireframe
         viewController.presenter = presenter
         presenter.view = viewController
         interactor.presenter = presenter

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FlickrPhotoDetailsInput: class {
-    func sendPreparedPhotoImage(image: UIImage)
+    func loadPreparedPhotoImage(image: UIImage)
 }
 
 protocol FlickrPhotoDetailsOutput: class {
@@ -17,7 +17,7 @@ protocol FlickrPhotoDetailsOutput: class {
     func loadLargeFlickrPhotoModelImage()
 }
 
-class FlickrPhotoDetailsViewController: UIViewController, FlickrPhotoDetailsInput {
+class FlickrPhotoDetailsViewController: BaseVC, FlickrPhotoDetailsInput {
 
     @IBOutlet weak var flickrPhotoImageView: UIImageView!
     @IBOutlet weak var flickrPhotoTitleLabel: UILabel!
@@ -31,10 +31,12 @@ class FlickrPhotoDetailsViewController: UIViewController, FlickrPhotoDetailsInpu
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.showLoading()
         presenter.loadLargeFlickrPhotoModelImage()
     }
 
-    func sendPreparedPhotoImage(image: UIImage) {
+    func loadPreparedPhotoImage(image: UIImage) {
         flickrPhotoImageView.image = image
+        self.hideLoading()
     }
 }
