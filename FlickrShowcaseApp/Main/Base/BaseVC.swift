@@ -13,6 +13,7 @@ class BaseVC: UIViewController, Progressable {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
 }
 

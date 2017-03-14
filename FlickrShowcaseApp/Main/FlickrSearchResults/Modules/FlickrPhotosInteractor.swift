@@ -20,8 +20,8 @@ protocol FlickrPhotosInteractorOutput: class {
 
 class FlickrPhotosInteractor: FlickrPhotosInteractorInput {
     
-    var flickrAPIDataManager: FlickrDataManager!
     weak var presenter: FlickrPhotosInteractorOutput!
+    var flickrAPIDataManager: FlickrDataManager!
     var flickrPhotosArray: [FlickrPhotoModel]!
     
     func configureFlickrPhoto(array: [FlickrPhotoModel]) {

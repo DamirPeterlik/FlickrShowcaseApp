@@ -18,9 +18,9 @@ protocol FlickrSearchInteractorOutput: class {
 }
 
 class FlickrSearchInteractor: FlickrSearchInteractorInput {
-    
-    var flickrAPIDataManager: FlickrDataManager!
+
     weak var presenter: FlickrSearchInteractorOutput!
+    var flickrAPIDataManager: FlickrDataManager!
     
     func getPhotosFromDataManager(for searchText: String, page: Int) {
         flickrAPIDataManager.getPhotosFor(searchText: searchText, page: page, withSuccess: { (totalImagesForSearchTag, totalPagesForSearchTag, photos) in
