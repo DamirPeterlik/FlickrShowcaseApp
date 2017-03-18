@@ -63,18 +63,25 @@ class FlickrSearchViewController: BaseVC, FlickrSearchViewControllerInput, Alert
     func showPhotos(photos: [FlickrPhotoModel], totalPagesCount: Int, totalImagesCount: Int) {
         photosArray.append(contentsOf: photos)
         totalPages = totalPagesCount
-        startFlickrButton.isEnabled = true
         searchTextField.resignFirstResponder()
-        hideLoading()
         presenter.goToFlickrPhotosVC()
+        clearUIforNewSearch()
     }
 
     func showError(errorMessage: String) {
         showAlertWithMessage(message: errorMessage)
+        clearUIforNewSearch()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         presenter.sendDataToFlickrPhotosVC(segue: segue)
     }
+    
+    func clearUIforNewSearch() {
+        hideLoading()
+        startFlickrButton.isEnabled = true
+        searchTextField.text = ""
+    }
+    
 }
 
